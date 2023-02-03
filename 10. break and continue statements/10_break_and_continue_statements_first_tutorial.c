@@ -5,7 +5,7 @@ int main(int argc, char const *argv[])
     int i = 0;
     while (i < 10)
     {
-        i++;  
+        i++;
         if (i == 5) break;
         printf("i: %d\n", i);
 
@@ -13,5 +13,5 @@ int main(int argc, char const *argv[])
 
     printf("\nEND LOOP\n");
     
-    return 0;
+    return 0; 
 }
