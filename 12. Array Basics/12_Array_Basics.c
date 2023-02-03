@@ -15,5 +15,5 @@ int main(int argc, char const *argv[])
     printf("total score: %d\n", total);
     printf("avera score: %d\n", total/5);
     
-    return 0;
+    return 0; 
 }
