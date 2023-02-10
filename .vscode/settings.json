@@ -3,6 +3,7 @@
         "10_break_and_continue_statements_second_tutorial": "c",
         "random": "c",
         "stdio.h": "c",
-        "algorithm": "c"
+        "algorithm": "c",
+        "cstdlib": "c"
     }
 }
