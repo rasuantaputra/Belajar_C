@@ -1,6 +1,9 @@
 #include <stdio.h>
 
-// typedef keyword we use to make a new name (initial) to an exixtance data type
+/*
+* typedef keyword we use to make a new name (initial) to an exixtance data type
+* we often see typedef use in conjungtion would could "struct"
+*/
 typedef int kilometer;
 
 int main(int argc, char const *argv[])
