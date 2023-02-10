@@ -4,6 +4,10 @@
         "random": "c",
         "stdio.h": "c",
         "algorithm": "c",
-        "cstdlib": "c"
+        "cstdlib": "c",
+        "string.h": "c",
+        "array": "c",
+        "string_view": "c",
+        "initializer_list": "c"
     }
 }
