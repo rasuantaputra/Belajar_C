@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
 
     // if success return -1 if unsuccess return 0
     if (remove(file_name) != 0)
-    {
+    { 
         
         fprintf(stderr, "Errno: %d\n", errno);
         perror("Ini dia pesan error nya");
