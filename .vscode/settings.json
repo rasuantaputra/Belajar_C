@@ -12,6 +12,9 @@
         "cstdio": "c",
         "25_malloc_vs_calloc_differences_explained_second_tutorial": "c",
         "stdlib.h": "c",
-        "functional": "c"
+        "functional": "c",
+        "unistd.h": "c",
+        "time.h": "c",
+        "_mingw_mac.h": "c"
     }
 }
