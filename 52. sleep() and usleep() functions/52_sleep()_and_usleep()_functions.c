@@ -11,7 +11,6 @@
  */
 int main(int argc, char const *argv[])
 {
-
     printf("before\n");
     // sleep(5);
     usleep(5000000);
