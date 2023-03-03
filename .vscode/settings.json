@@ -17,6 +17,10 @@
         "time.h": "c",
         "_mingw_mac.h": "c",
         "cerrno": "c",
-        "math.h": "c"
+        "math.h": "c",
+        "deque": "c",
+        "string": "c",
+        "vector": "c",
+        "type_traits": "c"
     }
 }
