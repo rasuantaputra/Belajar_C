@@ -21,6 +21,7 @@
         "deque": "c",
         "string": "c",
         "vector": "c",
-        "type_traits": "c"
+        "type_traits": "c",
+        "library.h": "c"
     }
 }
