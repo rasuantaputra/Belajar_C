@@ -3,9 +3,8 @@
 /**
  * @brief "tmpnam()" is make a temporaray file in RAM/buffer when app is running (?)
  * 
- * @param argc 
- * @param argv 
- * @return int 
+ * @note harus coba di linux sepertinya, karena disini masih error
+ * @note usually use for store a data if the program crash
  */
 
 int main(int argc, char const *argv[])
