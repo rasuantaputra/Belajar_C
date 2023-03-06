@@ -23,5 +23,6 @@
         "vector": "c",
         "type_traits": "c",
         "library.h": "c"
-    }
+    },
+    "audioCues.lineHasError": "off"
 }
