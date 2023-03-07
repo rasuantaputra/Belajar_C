@@ -23,7 +23,8 @@
         "vector": "c",
         "type_traits": "c",
         "library.h": "c",
-        "bank.h": "c"
+        "bank.h": "c",
+        "stat.h": "c"
     },
     "audioCues.lineHasError": "off"
 }
