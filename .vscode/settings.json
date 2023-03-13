@@ -26,5 +26,6 @@
         "bank.h": "c",
         "stat.h": "c"
     },
-    "audioCues.lineHasError": "off"
+    "audioCues.lineHasError": "off",
+    "grammarly.files.include": ["**/README.md", "**/readme.md", "**/*.txt"]
 }
