@@ -1,0 +1,4 @@
+C:\Users\rasua\Documents\PUTRA\Belajar\Belajar_C\111. Predefined Preprocessor Macros + Log File Use Case\111_predefined_preprocessor_macros_+_log_file_use_case_second_tutorial.c:17:task 1 done
+C:\Users\rasua\Documents\PUTRA\Belajar\Belajar_C\111. Predefined Preprocessor Macros + Log File Use Case\111_predefined_preprocessor_macros_+_log_file_use_case_second_tutorial.c:27:task 1 done
+C:\Users\rasua\Documents\PUTRA\Belajar\Belajar_C\111. Predefined Preprocessor Macros + Log File Use Case\111_predefined_preprocessor_macros_+_log_file_use_case_second_tutorial.c:17:task 1 done
+C:\Users\rasua\Documents\PUTRA\Belajar\Belajar_C\111. Predefined Preprocessor Macros + Log File Use Case\111_predefined_preprocessor_macros_+_log_file_use_case_second_tutorial.c:27:task 1 done
