@@ -24,7 +24,8 @@
         "type_traits": "c",
         "library.h": "c",
         "bank.h": "c",
-        "stat.h": "c"
+        "stat.h": "c",
+        "limits.h": "c"
     },
     "audioCues.lineHasError": "off",
     "grammarly.files.include": ["**/README.md", "**/readme.md", "**/*.txt"]
