@@ -16,12 +16,11 @@ int max_rectangle_area(int width1, int length1, int width2, int length2)
     int area2 = rectangle_area(width2,length2);
 
     if (area1 > area2) return area1;
-    else area2;
+    else return area2;
 }
 
 int main(int argc, char const *argv[])
 {
-    //  i don't know why this function error
     printf("max area: %d\n", max_rectangle_area(4, 5, 9, 8));
     return 0;
 }
