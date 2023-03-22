@@ -1,11 +1,7 @@
 #include<stdio.h>
 
 /**
- * @brief 
- * 
- * @param argc 
- * @param argv 
- * @return int 
+ * @brief this tutorial about differences between string literal with pointer and without pointer
  */
 
 int main(int argc, char const *argv[])
