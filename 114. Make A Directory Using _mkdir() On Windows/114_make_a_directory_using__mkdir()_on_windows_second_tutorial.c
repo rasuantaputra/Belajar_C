@@ -2,6 +2,11 @@
 #include <direct.h>
 #include <errno.h>
 
+/**
+ * @note this tutorial explain how to make a directory in WINDOWS
+ * 
+ */
+
 int main(int argc, char const *argv[])
 {
     // make directory in absolute path
