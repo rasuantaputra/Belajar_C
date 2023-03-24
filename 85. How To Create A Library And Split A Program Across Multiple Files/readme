@@ -1,0 +1,5 @@
+how to compile :
+
+1. open terminal
+2. type: gcc -o <file_name_after_compiled> <file_want_to_compile> <library.c>
+   e.g: gcc -o "132_static _functions" "132_static _functions.c" lib.c
