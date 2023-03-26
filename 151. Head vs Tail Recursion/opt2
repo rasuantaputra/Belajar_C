@@ -1,0 +1,141 @@
+	.file	"151_head_vs_tail_recursion.c"
+	.text
+	.p2align 4
+	.def	printf;	.scl	3;	.type	32;	.endef
+	.seh_proc	printf
+printf:
+	pushq	%rsi
+	.seh_pushreg	%rsi
+	pushq	%rbx
+	.seh_pushreg	%rbx
+	subq	$56, %rsp
+	.seh_stackalloc	56
+	.seh_endprologue
+	leaq	88(%rsp), %rsi
+	movq	%rcx, %rbx
+	movq	%rdx, 88(%rsp)
+	movl	$1, %ecx
+	movq	%r8, 96(%rsp)
+	movq	%r9, 104(%rsp)
+	movq	%rsi, 40(%rsp)
+	call	*__imp___acrt_iob_func(%rip)
+	movq	%rsi, %r8
+	movq	%rbx, %rdx
+	movq	%rax, %rcx
+	call	__mingw_vfprintf
+	addq	$56, %rsp
+	popq	%rbx
+	popq	%rsi
+	ret
+	.seh_endproc
+	.p2align 4
+	.globl	sum
+	.def	sum;	.scl	2;	.type	32;	.endef
+	.seh_proc	sum
+sum:
+	.seh_endprologue
+	xorl	%eax, %eax
+	testl	%ecx, %ecx
+	je	.L3
+	.p2align 4,,10
+	.p2align 3
+.L4:
+	addl	%ecx, %eax
+	subl	$1, %ecx
+	jne	.L4
+.L3:
+	ret
+	.seh_endproc
+	.p2align 4
+	.globl	sum_head
+	.def	sum_head;	.scl	2;	.type	32;	.endef
+	.seh_proc	sum_head
+sum_head:
+	.seh_endprologue
+	testl	%ecx, %ecx
+	movl	%edx, %eax
+	jle	.L12
+	.p2align 4,,10
+	.p2align 3
+.L13:
+	addl	%ecx, %eax
+	subl	$1, %ecx
+	jne	.L13
+.L12:
+	ret
+	.seh_endproc
+	.p2align 4
+	.globl	sum_tail
+	.def	sum_tail;	.scl	2;	.type	32;	.endef
+	.seh_proc	sum_tail
+sum_tail:
+	.seh_endprologue
+	testl	%ecx, %ecx
+	movl	%edx, %eax
+	je	.L19
+	.p2align 4,,10
+	.p2align 3
+.L16:
+	addl	%ecx, %eax
+	subl	$1, %ecx
+	jne	.L16
+.L19:
+	ret
+	.seh_endproc
+	.p2align 4
+	.globl	sum_tail_modified
+	.def	sum_tail_modified;	.scl	2;	.type	32;	.endef
+	.seh_proc	sum_tail_modified
+sum_tail_modified:
+	.seh_endprologue
+	testq	%rcx, %rcx
+	movq	%rdx, %rax
+	je	.L27
+	.p2align 4,,10
+	.p2align 3
+.L24:
+	addq	%rcx, %rax
+	subq	$1, %rcx
+	jne	.L24
+.L27:
+	ret
+	.seh_endproc
+	.def	__main;	.scl	2;	.type	32;	.endef
+	.section .rdata,"dr"
+.LC0:
+	.ascii "sum(5): %d\12\0"
+.LC1:
+	.ascii "sum_head(5, 0): %d\12\0"
+.LC2:
+	.ascii "sum_tail(5, 0): %d\12\12\0"
+	.align 8
+.LC3:
+	.ascii "sum_tail_modified(9900000, 0): %zu\12\0"
+	.section	.text.startup,"x"
+	.p2align 4
+	.globl	main
+	.def	main;	.scl	2;	.type	32;	.endef
+	.seh_proc	main
+main:
+	subq	$40, %rsp
+	.seh_stackalloc	40
+	.seh_endprologue
+	call	__main
+	movl	$15, %edx
+	leaq	.LC0(%rip), %rcx
+	call	printf
+	movl	$15, %edx
+	leaq	.LC1(%rip), %rcx
+	call	printf
+	movl	$15, %edx
+	leaq	.LC2(%rip), %rcx
+	call	printf
+	leaq	.LC3(%rip), %rcx
+	movabsq	$49005004950000, %rdx
+	call	printf
+	xorl	%eax, %eax
+	addq	$40, %rsp
+	ret
+	.seh_endproc
+	.ident	"GCC: (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 12.2.0"
+	.def	__mingw_vfprintf;	.scl	2;	.type	32;	.endef

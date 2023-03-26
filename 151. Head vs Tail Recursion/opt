@@ -1,0 +1,209 @@
+	.file	"151_head_vs_tail_recursion.c"
+	.text
+	.def	printf;	.scl	3;	.type	32;	.endef
+	.seh_proc	printf
+printf:
+	pushq	%rbp
+	.seh_pushreg	%rbp
+	pushq	%rbx
+	.seh_pushreg	%rbx
+	subq	$56, %rsp
+	.seh_stackalloc	56
+	leaq	48(%rsp), %rbp
+	.seh_setframe	%rbp, 48
+	.seh_endprologue
+	movq	%rcx, 32(%rbp)
+	movq	%rdx, 40(%rbp)
+	movq	%r8, 48(%rbp)
+	movq	%r9, 56(%rbp)
+	leaq	40(%rbp), %rax
+	movq	%rax, -16(%rbp)
+	movq	-16(%rbp), %rbx
+	movl	$1, %ecx
+	movq	__imp___acrt_iob_func(%rip), %rax
+	call	*%rax
+	movq	%rax, %rcx
+	movq	32(%rbp), %rax
+	movq	%rbx, %r8
+	movq	%rax, %rdx
+	call	__mingw_vfprintf
+	movl	%eax, -4(%rbp)
+	movl	-4(%rbp), %eax
+	addq	$56, %rsp
+	popq	%rbx
+	popq	%rbp
+	ret
+	.seh_endproc
+	.globl	sum
+	.def	sum;	.scl	2;	.type	32;	.endef
+	.seh_proc	sum
+sum:
+	pushq	%rbp
+	.seh_pushreg	%rbp
+	movq	%rsp, %rbp
+	.seh_setframe	%rbp, 0
+	subq	$32, %rsp
+	.seh_stackalloc	32
+	.seh_endprologue
+	movl	%ecx, 16(%rbp)
+	cmpl	$0, 16(%rbp)
+	jne	.L4
+	movl	$0, %eax
+	jmp	.L5
+.L4:
+	movl	16(%rbp), %eax
+	subl	$1, %eax
+	movl	%eax, %ecx
+	call	sum
+	movl	16(%rbp), %edx
+	addl	%edx, %eax
+.L5:
+	addq	$32, %rsp
+	popq	%rbp
+	ret
+	.seh_endproc
+	.globl	sum_head
+	.def	sum_head;	.scl	2;	.type	32;	.endef
+	.seh_proc	sum_head
+sum_head:
+	pushq	%rbp
+	.seh_pushreg	%rbp
+	movq	%rsp, %rbp
+	.seh_setframe	%rbp, 0
+	subq	$32, %rsp
+	.seh_stackalloc	32
+	.seh_endprologue
+	movl	%ecx, 16(%rbp)
+	movl	%edx, 24(%rbp)
+	cmpl	$0, 16(%rbp)
+	jle	.L7
+	movl	24(%rbp), %edx
+	movl	16(%rbp), %eax
+	addl	%eax, %edx
+	movl	16(%rbp), %eax
+	subl	$1, %eax
+	movl	%eax, %ecx
+	call	sum_head
+	jmp	.L8
+.L7:
+	movl	24(%rbp), %eax
+.L8:
+	addq	$32, %rsp
+	popq	%rbp
+	ret
+	.seh_endproc
+	.globl	sum_tail
+	.def	sum_tail;	.scl	2;	.type	32;	.endef
+	.seh_proc	sum_tail
+sum_tail:
+	pushq	%rbp
+	.seh_pushreg	%rbp
+	movq	%rsp, %rbp
+	.seh_setframe	%rbp, 0
+	subq	$32, %rsp
+	.seh_stackalloc	32
+	.seh_endprologue
+	movl	%ecx, 16(%rbp)
+	movl	%edx, 24(%rbp)
+	cmpl	$0, 16(%rbp)
+	jne	.L10
+	movl	24(%rbp), %eax
+	jmp	.L11
+.L10:
+	movl	24(%rbp), %edx
+	movl	16(%rbp), %eax
+	addl	%eax, %edx
+	movl	16(%rbp), %eax
+	subl	$1, %eax
+	movl	%eax, %ecx
+	call	sum_tail
+.L11:
+	addq	$32, %rsp
+	popq	%rbp
+	ret
+	.seh_endproc
+	.globl	sum_tail_modified
+	.def	sum_tail_modified;	.scl	2;	.type	32;	.endef
+	.seh_proc	sum_tail_modified
+sum_tail_modified:
+	pushq	%rbp
+	.seh_pushreg	%rbp
+	movq	%rsp, %rbp
+	.seh_setframe	%rbp, 0
+	.seh_endprologue
+	movq	%rcx, 16(%rbp)
+	movq	%rdx, 24(%rbp)
+.L15:
+	cmpq	$0, 16(%rbp)
+	jne	.L13
+	movq	24(%rbp), %rax
+	jmp	.L16
+.L13:
+	movq	16(%rbp), %rax
+	addq	%rax, 24(%rbp)
+	subq	$1, 16(%rbp)
+	jmp	.L15
+.L16:
+	popq	%rbp
+	ret
+	.seh_endproc
+	.def	__main;	.scl	2;	.type	32;	.endef
+	.section .rdata,"dr"
+.LC0:
+	.ascii "sum(5): %d\12\0"
+.LC1:
+	.ascii "sum_head(5, 0): %d\12\0"
+.LC2:
+	.ascii "sum_tail(5, 0): %d\12\12\0"
+	.align 8
+.LC3:
+	.ascii "sum_tail_modified(9900000, 0): %zu\12\0"
+	.text
+	.globl	main
+	.def	main;	.scl	2;	.type	32;	.endef
+	.seh_proc	main
+main:
+	pushq	%rbp
+	.seh_pushreg	%rbp
+	movq	%rsp, %rbp
+	.seh_setframe	%rbp, 0
+	subq	$32, %rsp
+	.seh_stackalloc	32
+	.seh_endprologue
+	movl	%ecx, 16(%rbp)
+	movq	%rdx, 24(%rbp)
+	call	__main
+	movl	$5, %ecx
+	call	sum
+	movl	%eax, %edx
+	leaq	.LC0(%rip), %rax
+	movq	%rax, %rcx
+	call	printf
+	movl	$0, %edx
+	movl	$5, %ecx
+	call	sum_head
+	movl	%eax, %edx
+	leaq	.LC1(%rip), %rax
+	movq	%rax, %rcx
+	call	printf
+	movl	$0, %edx
+	movl	$5, %ecx
+	call	sum_tail
+	movl	%eax, %edx
+	leaq	.LC2(%rip), %rax
+	movq	%rax, %rcx
+	call	printf
+	movl	$0, %edx
+	movl	$9900000, %ecx
+	call	sum_tail_modified
+	movq	%rax, %rdx
+	leaq	.LC3(%rip), %rax
+	movq	%rax, %rcx
+	call	printf
+	movl	$0, %eax
+	addq	$32, %rsp
+	popq	%rbp
+	ret
+	.seh_endproc
+	.ident	"GCC: (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 12.2.0"
+	.def	__mingw_vfprintf;	.scl	2;	.type	32;	.endef
