@@ -1,0 +1,2 @@
+Priting string literal
+Another string
